@@ -6,43 +6,151 @@ public class Program
     {
         Console.WriteLine("=== Calculator Lite ===\n");
 
-        // TODO: Declare variables for storing user input (use descriptive names)
-        // Hint: You'll need variables for two numbers, user name, and calculation choice
+        //Declares variables
+        string name;
+        int count = 6;
 
-        // TODO: Ask for user's name (string) and greet them
-        // Example: "Enter your name: " then "Hello, [name]!"
+        //Greets
+        Console.WriteLine("Howdy! What is your name?");
+        name = Console.ReadLine();
+        Console.WriteLine("Welcome to Calculator Lite {0}!", name);
 
-        // TODO: Ask if they want to use decimals (bool)
-        // Example: "Use decimal precision? (yes/no): "
-        // Store as boolean (true for yes, false for no)
+        //decimals or not
+        Console.WriteLine("Use decimal precision?(yes/no)");
+        bool choice = Console.ReadLine() == "yes";
 
-        // TODO: Prompt user for first number (double or int based on choice)
-        // If decimals: use double.Parse()
-        // If no decimals: use int.Parse() then cast to double
+        if (choice)
+        {
+            double d1, d2, sum, difference, product, quotient, remainder, average, percentage;
+            //Gets numbers
+            // If decimals: use double.Parse()
+            // If no decimals: use int.Parse() then cast to double
+            Console.WriteLine("Please enter your first number");
+            d1 = double.Parse(Console.ReadLine());
+            Console.WriteLine("Please enter your second number");
+            d2 = double.Parse(Console.ReadLine());
 
-        // TODO: Prompt user for second number (same type as first)
+            //Calculations
+            sum = d1 + d2;
+            difference = d1 - d2;
+            product = d1 * d2;
+            if (d2 == 0)
+            {
+                quotient = 0;
+                remainder = 0;
+            }
+            else
+            {
+                quotient = d1 / d2;
+                remainder = d1 % d2;
+            }
 
-        // TODO: Calculate ALL arithmetic operations:
-        // - sum (addition: +)
-        // - difference (subtraction: -)
-        // - product (multiplication: *)
-        // - quotient (division: /)
-        // - remainder (modulus: %)
-        // - average ((num1 + num2) / 2)
+            average = sum / 2;
 
-        // TODO: Display results with proper formatting
-        // Show 2 decimal places: {value:F2}
-        // Include descriptive labels for each operation
+            if (d2 == 0)
+            {
+                percentage = 0;
+            }
+            else
+            {
+                percentage = (difference * 100) / d1;
+            }
 
-        // TODO: Check if second number is zero BEFORE dividing
-        // Use if statement: if (num2 == 0) { show error } else { calculate }
+            // TODO: Display results with proper formatting
+            // Show 2 decimal places: {value:F2}
+            Console.WriteLine("SUM: {0} + {1} = {2:F2}", d1, d2, sum.ToString());
+            Console.WriteLine("DIFFERENCE: {0} - {1} = {2:F2}", d1, d2, difference);
+            Console.WriteLine("PRODUCT: {0} * {1} = {2:F2}", d1, d2, product.ToString());
+            if (d2 == 0)
+            {
+                Console.WriteLine("QUOTIENT: Cannot calculate (cannot divide by zero)");
+                Console.WriteLine("REMAINDER: Cannot calculate (cannot divide by zero)");
+            }
+            else
+            {
+                Console.WriteLine("QUOTIENT: {0} / {1} = {2:F2}", d1, d2, quotient.ToString());
+                Console.WriteLine("REMAINDER: {0} % {1} = {2:F2}", d1, d2, remainder.ToString());
+            }
 
+            Console.WriteLine("AVERAGE: ({0} + {1}) / 2 = {2:F2}", d1, d2, average.ToString());
+
+            if (d2 == 0)
+            {
+                Console.WriteLine("PERCENTAGE DIFFERENCE: Cannot calculate (cannot divide by zero)");
+            }
+            else
+            {
+                Console.WriteLine("PERCENTAGE DIFFERENCE: {0}%", percentage);
+            }
+        }
+        else //NO DECIMAL PRECISION!
+        {
+            int num1, num2, sum, difference, product, quotient, remainder, average, percentage;
+            //Gets numbers
+            // If decimals: use double.Parse()
+            // If no decimals: use int.Parse() then cast to double
+            Console.WriteLine("Please enter your first number");
+            num1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Please enter your second number");
+            num2 = int.Parse(Console.ReadLine());
+
+            //Calculations
+            sum = num1 + num2;
+            difference = num1 - num2;
+            product = num1 * num2;
+            if (num2 == 0)
+            {
+                quotient = 0;
+                remainder = 0;
+            }
+            else
+            {
+                quotient = num1 / num2;
+                remainder = num1 % num2;
+            }
+
+            average = sum / 2;
+
+            if (num2 == 0)
+            {
+                percentage = 0;
+            }
+            else
+            {
+                percentage = (difference * 100) / num1;
+            }
+
+            // TODO: Display results with proper formatting
+            // Show 2 decimal places: {value:F2}
+            Console.WriteLine("SUM: {0} + {1} = {2}", num1, num2, sum.ToString());
+            Console.WriteLine("DIFFERENCE: {0} - {1} = {2}", num1, num2, difference);
+            Console.WriteLine("PRODUCT: {0} * {1} = {2}", num1, num2, product.ToString());
+            if (num2 == 0)
+            {
+                Console.WriteLine("QUOTIENT: Cannot calculate (cannot divide by zero)");
+                Console.WriteLine("REMAINDER: Cannot calculate (cannot divide by zero)");
+            }
+            else
+            {
+                Console.WriteLine("QUOTIENT: {0} / {1} = {2}", num1, num2, quotient.ToString());
+                Console.WriteLine("REMAINDER: {0} % {1} = {2}", num1, num2, remainder.ToString());
+            }
+
+            Console.WriteLine("AVERAGE: ({0} + {1}) / 2 = {2}", num1, num2, average.ToString());
+
+            if (num2 == 0)
+            {
+                Console.WriteLine("PERCENTAGE DIFFERENCE: Cannot calculate (cannot divide by zero)");
+            }
+            else
+            {
+                Console.WriteLine("PERCENTAGE DIFFERENCE: {0}%", percentage);
+            }
+        }
         // TODO: Count total calculations performed (int)
         // Display: "Performed [count] calculations for [name]!"
+        Console.WriteLine("Performed {0} calculations for {1}!", count, name);
 
-        // TODO: Calculate percentage difference
-        // Formula: ((num1 - num2) / num1) * 100
-        // Display with % symbol
         Console.WriteLine("\nThank you for using Calculator Lite!");
     }
 }

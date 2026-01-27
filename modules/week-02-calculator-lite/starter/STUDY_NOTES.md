@@ -7,24 +7,24 @@
 **What are the four data types you used in this assignment?**
 [List each data type (string, bool, int, double) and explain what kind of data each one stores]
 
-Answer:
+Answer: Strings store characters, bools store true or false, integers store number without decimals, and a double stores numbers with decimals.
 
 **Why did we use `double` instead of `int` for the calculations?**
 [Explain the difference between int and double, and why double is better for this calculator]
 
-Answer:
+Answer: The difference between an integer and a double is that an integer cannot have decimals. A double is better because it is more accurate and useful with decimals.
 
 **How do you convert a string to a boolean?**
 [Explain how you converted the user's "yes/no" input into a true/false value]
 
-Answer:
+Answer: This was one of the hardest parts of the assignment. I converted the users yes or no by checking if the users input is equal to yes than its true.
 
 ## Challenges and Solutions
 
 **Biggest challenge with this assignment:**
 [What was the hardest part? Understanding data types, getting user input, performing calculations, formatting output, or handling division by zero?]
 
-Answer:
+Answer: The hardest part of learning
 
 **How you solved it:**
 [Explain what you did to overcome the challenge - reviewed documentation, asked for help, tested different approaches, etc.]
