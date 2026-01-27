@@ -8,15 +8,19 @@ public class Program
 
         //Declares variables
         string name;
+
         int count = 6;
 
         //Greets
-        Console.WriteLine("Howdy! What is your name?");
+        Console.WriteLine("Enter your name:");
+
         name = Console.ReadLine();
-        Console.WriteLine("Welcome to Calculator Lite {0}!", name);
+
+        Console.WriteLine("Hello {0}! Let's do some calculations!", name);
 
         //decimals or not
         Console.WriteLine("Use decimal precision?(yes/no)");
+
         bool choice = Console.ReadLine() == "yes";
 
         if (choice)
@@ -26,11 +30,15 @@ public class Program
             // If decimals: use double.Parse()
             // If no decimals: use int.Parse() then cast to double
             Console.WriteLine("Please enter your first number");
+
             d1 = double.Parse(Console.ReadLine());
+
             Console.WriteLine("Please enter your second number");
+
             d2 = double.Parse(Console.ReadLine());
 
             //Calculations
+
             sum = d1 + d2;
             difference = d1 - d2;
             product = d1 * d2;
