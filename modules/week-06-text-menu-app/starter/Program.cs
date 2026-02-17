@@ -3,7 +3,7 @@
 - Instructor: Zak Brinlee
 - Term: Winter 2026
 -
-- Programmer: Chad Ironchin
+- Programmer: Mateo Minor
 - Assignment: Week 6: Text Menu App
 -
 - What does this program do?:
@@ -80,9 +80,9 @@ public class Program
                     string msg = Console.ReadLine() ?? "";
 
                     Console.WriteLine("------------------------------------------------");
-                    Console.WriteLine(string.Format("| {0,-45} |", "Hello, " + name + "!"));
-                    Console.WriteLine(string.Format("| {0,-45} |", "Nice to meet you, " + name.ToUpper() + "."));
-                    Console.WriteLine(string.Format("| {0,-45} |", "Message: " + msg));
+                    Console.WriteLine("Hello, " + name + "!");
+                    Console.WriteLine("Nice to meet you, " + name.ToUpper() + ".");
+                    Console.WriteLine("Message: " + msg);
                     Console.WriteLine("------------------------------------------------");
                     break;
 
