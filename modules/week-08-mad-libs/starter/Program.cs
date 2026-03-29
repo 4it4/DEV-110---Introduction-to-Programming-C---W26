@@ -19,13 +19,6 @@ public class Program
         Console.WriteLine("=== Mad Libs: Structure + Debugging ===");
         Console.WriteLine();
 
-        // TODO 1: Implement the main game loop
-        // The loop should:
-        // - Let player choose a template
-        // - Collect words for the template
-        // - Generate and display the story using template.GenerateStory()
-        // - Ask if the player wants to play again
-        // - Repeat if they answer 'y'
         bool playAgain;
         do
         {
@@ -45,64 +38,115 @@ public class Program
     }
 
     // TODO 2: Implement ChooseTemplate
-    // This method should:
-    // - Print the two template options:
-    //   1) Debugging at the Zoo
-    //   2) The Standup Meeting
-    // - Use ReadIntInRange to get user's choice (1-2)
-    // - Return the appropriate StoryTemplate (see template details in README)
     private static StoryTemplate ChooseTemplate()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("1) Debugging at the Zoo");
+        Console.WriteLine("2) The Standup Meeting");
+
+        int choice = ReadIntInRange("Choose a template (1-2): ", 1, 2);
+
+        if (choice == 1)
+        {
+            return new StoryTemplate(
+                "Debugging at the Zoo",
+                new string[]
+                {
+                    "Enter an adjective: ",
+                    "Enter a type of animal (plural): ",
+                    "Enter a verb ending in -ing: ",
+                    "Enter a programming language: ",
+                    "Enter a debugging tool: ",
+                    "Enter a number: ",
+                    "Enter an emotion: ",
+                    "Enter an exclamation: "
+                },
+                "Today at the zoo, a group of {1} were acting very {0}.\n" +
+                "They kept {2} near the {3} exhibit, which was very confusing.\n" +
+                "A zookeeper used a {4} to investigate and found {5} errors.\n" +
+                "Everyone felt {6} about it. \"{7}!\" said the head zookeeper."
+            );
+        }
+        else
+        {
+            return new StoryTemplate(
+                "The Standup Meeting",
+                new string[]
+                {
+                    "Enter a coworker's name: ",
+                    "Enter an adjective: ",
+                    "Enter a project or feature name: ",
+                    "Enter a past-tense verb: ",
+                    "Enter a number: ",
+                    "Enter a plural noun (work-related): ",
+                    "Enter a technical error or bug: ",
+                    "Enter a snack food: "
+                },
+                "At today's standup, {0} gave a very {1} update.\n" +
+                "Apparently, the {2} feature was {3} overnight.\n" +
+                "There are now {4} open {5}, mostly caused by a {6}.\n" +
+                "The team decided to fix it after eating {7}."
+            );
+        }
     }
 
     // TODO 3: Implement CollectWords
-    // This method should:
-    // - Use Logger.Info to log that word collection is starting
-    // - Create a string array the same length as template.Prompts
-    // - Loop through each prompt and use ReadNonEmptyString
-    // - Print a blank line after collection
-    // - Return the array of collected words
     private static string[] CollectWords(StoryTemplate template)
     {
-        throw new NotImplementedException();
+        Logger.Info("Collecting words for the story...");
+
+        string[] words = new string[template.Prompts.Length];
+
+        for (int i = 0; i < template.Prompts.Length; i++)
+        {
+            words[i] = ReadNonEmptyString(template.Prompts[i]);
+        }
+
+        Console.WriteLine();
+        return words;
     }
 
     // TODO 4: Implement ReadYesNo
-    // This method should:
-    // - Show the prompt
-    // - Read input (handle null with ?? string.Empty)
-    // - Trim the input
-    // - Accept "y" or "n" (case-insensitive)
-    // - Keep asking until valid input is provided
-    // - Return true for "y", false for "n"
     private static bool ReadYesNo(string prompt)
     {
-        throw new NotImplementedException();
+        while (true)
+        {
+            Console.Write(prompt);
+            string input = (Console.ReadLine() ?? string.Empty).Trim().ToLower();
+
+            if (input == "y") return true;
+            if (input == "n") return false;
+        }
     }
 
     // TODO 5: Implement ReadIntInRange
-    // This method should:
-    // - Use a do-while loop
-    // - Show the prompt
-    // - Read input and use int.TryParse
-    // - Validate the number is between min and max (inclusive)
-    // - Keep asking until valid
-    // - Return the valid integer
     private static int ReadIntInRange(string prompt, int min, int max)
     {
-        throw new NotImplementedException();
+        int result;
+        bool valid;
+
+        do
+        {
+            Console.Write(prompt);
+            string input = Console.ReadLine() ?? string.Empty;
+            valid = int.TryParse(input, out result) && result >= min && result <= max;
+        }
+        while (!valid);
+
+        return result;
     }
 
     // TODO 6: Implement ReadNonEmptyString
-    // This method should:
-    // - Show the prompt
-    // - Read input (handle null with ?? string.Empty)
-    // - Trim the input
-    // - Keep asking if input is empty or whitespace
-    // - Return the valid non-empty string
     private static string ReadNonEmptyString(string prompt)
     {
-        throw new NotImplementedException();
+        string input;
+
+        do
+        {
+            Console.Write(prompt);
+            input = (Console.ReadLine() ?? string.Empty).Trim();
+        }
+        while (string.IsNullOrWhiteSpace(input));
+
+        return input;
     }
 }
